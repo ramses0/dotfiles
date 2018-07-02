@@ -6,10 +6,11 @@ for file in "$FILES" ; do
 	source $file
 done
 
+$DOTFILES/vim/install.sh
+
 if [ -z "$PS1" ]; then
         echo "---===[[[ this shell is not interactive ]]]===---"
 else
 	alias ls='ls --color=auto'
-	$DOTFILES/vim/install.sh
         echo "---===[[[ THIS SHELL IS INTERACTIVE ]]]===---"
 fi
