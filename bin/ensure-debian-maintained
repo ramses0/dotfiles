@@ -1,1 +1,42 @@
-echo "where ensure debian maintained"
+#!/bin/bash
+
+CRIT_DAYS=5
+WARN_DAYS=1
+echo "where ensure debian maintained (warn every $WARN_DAYS, and auto-update after $CRIT_DAYS) "
+
+find /var/log/apt/history.log -mtime +$CRIT_DAYS | grep -q log
+FOUND_CRIT=$?
+
+find /var/log/apt/history.log -mtime +$WARN_DAYS | grep -q log 
+FOUND_WARN=$?
+
+echo "foundwarn=$FOUND_WARN foundcrit=$FOUND_CRIT"
+
+if [ "$FOUND_CRIT" == "0" ] ; then 
+	echo "Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo "Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo "Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo "Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo "Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo " see? => /var/log/apt/history.log "
+	ls -al /var/log/apt/history.log 
+	echo "...so to encourage you to keep your system up to date, I'm going to run apt-get update && apt-get upgrade (with -y force yes on upgrade) to keep you safe"
+	sudo apt-get update
+	sudo apt-get -y upgrade
+	echo "then complain some more about Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo "then complain some more about Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo "then complain some more about Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+	echo "then complain some more about Apt History is waaaayyy 'too old'  (@@@ $CRIT_DAYS @@@) days"
+elif [ "$FOUND_WARN" == "0" ] ; then
+
+	echo "Apt History is 'too old'  (@@@ $WARN_DAYS @@@) days"
+	echo " see? => /var/log/apt/history.log "
+	ls -al /var/log/apt/history.log 
+	echo "...so to encourage you to keep your system up to date, I'm going to run apt-get update && apt-get upgrade to keep you safe"
+	sudo apt-get update
+	sudo apt-get upgrade
+else
+	echo " see? => /var/log/apt/history.log "
+	ls -al /var/log/apt/history.log 
+	echo "...it's not too old so you're cool!"
+fi
