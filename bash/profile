@@ -1,5 +1,4 @@
 export PROJECTS=$HOME/Git
-export DOTFILES=$PROJECTS/__dotfiles__
 
 FILES=$( find $DOTFILES -name path.sh )
 for file in "$FILES" ; do
@@ -11,6 +10,6 @@ if [ -z "$PS1" ]; then
         echo "---===[[[ this shell is not interactive ]]]===---"
 else
 	alias ls='ls --color=auto'
-	~/Git/__dotfiles__/vim/install.sh
+	$DOTFILES/vim/install.sh
         echo "---===[[[ THIS SHELL IS INTERACTIVE ]]]===---"
 fi
