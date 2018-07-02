@@ -1,1 +1,5 @@
 alias hello='echo world'
+alias ls='ls --color=auto'
+~/Git/__dotfiles__/vim/install.sh
+
+#alias config='/usr/bin/git --git-dir=$HOME/Git/__dotfiles__/ --git-dir=$HOME/Git/__dotfiles__/'

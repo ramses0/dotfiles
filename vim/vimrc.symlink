@@ -1,18 +1,38 @@
-syntax on
+" https://github.com/tpope/vim-pathogen
+execute pathogen#infect()
 
-" Wrap gitcommit file types at the appropriate length
+" rames
+set nocompatible
+syntax on
+let maplocalleader=","
+let mapleader = ","
+let localleader = ","
+filetype on
+filetype plugin on
+filetype indent on
+nmap <tab> <c-]>
+set hls
 filetype indent plugin on
 
-" classic vimtip 102
-function! InsertTabWrapper(direction)
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    elseif "backward" == a:direction
-        return "\<c-p>"
+" advanced vimtip 102
+inoremap <silent> <Tab> <C-r>=<SID>InsertTabWrapper(1)<CR>
+inoremap <silent> <S-Tab> <C-r>=<SID>InsertTabWrapper(-1)<CR>
+function! <SID>InsertTabWrapper(direction)
+  let idx = col('.') - 1
+  let str = getline('.')
+  if a:direction > 0 && idx >= 2 && str[idx - 1] == ' '
+        \&& str[idx - 2] =~? '[a-z]'
+    if &softtabstop && idx % &softtabstop == 0
+      return "\<BS>\<Tab>\<Tab>"
     else
-        return "\<c-n>"
+      return "\<BS>\<Tab>"
     endif
+  elseif idx == 0 || str[idx - 1] !~? '[a-z]'
+    return "\<Tab>"
+  elseif a:direction > 0
+    return "\<C-p>"
+  else
+    return "\<C-n>"
+  endif
 endfunction
-inoremap <tab> <c-r>=InsertTabWrapper ("backward")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper ("forward")<cr>
+
