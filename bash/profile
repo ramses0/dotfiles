@@ -1,5 +1,16 @@
-alias hello='echo world'
-alias ls='ls --color=auto'
-~/Git/__dotfiles__/vim/install.sh
+export PROJECTS=$HOME/Git
+export DOTFILES=$PROJECTS/__dotfiles__
 
-#alias config='/usr/bin/git --git-dir=$HOME/Git/__dotfiles__/ --git-dir=$HOME/Git/__dotfiles__/'
+FILES=$( find $DOTFILES -name path.sh )
+for file in "$FILES" ; do
+	echo "Importing $file..."
+	source $file
+done
+
+if [ -z "$PS1" ]; then
+        echo "---===[[[ this shell is not interactive ]]]===---"
+else
+	alias ls='ls --color=auto'
+	~/Git/__dotfiles__/vim/install.sh
+        echo "---===[[[ THIS SHELL IS INTERACTIVE ]]]===---"
+fi
