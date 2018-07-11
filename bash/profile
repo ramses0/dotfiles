@@ -32,6 +32,7 @@ else
 		fi
 	}
 	alias ls='ls --color=auto'
+	alias sra='ssh robertames.com'
         echo "---===[[[ THIS SHELL IS INTERACTIVE ]]]===---"
 	LOCKED='(locked)'
 	UNLOCKED='(unlocked)'
