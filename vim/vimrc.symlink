@@ -12,7 +12,10 @@ filetype plugin on
 filetype indent on
 nmap <tab> <c-]>
 set hls
+set expandtab
+set ts=4 sw=4
 filetype indent plugin on
+hi MatchParen cterm=none ctermbg=black ctermfg=red
 
 " advanced vimtip 102
 inoremap <silent> <Tab> <C-r>=<SID>InsertTabWrapper(1)<CR>

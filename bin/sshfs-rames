@@ -1,0 +1,2 @@
+echo mkdir -p /mnt/robertames.com
+echo sshfs -oauto_cache,reconnect,defer_permissions,noappledouble rames@robertames.com:./ /mnt/robertames.com

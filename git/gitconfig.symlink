@@ -10,7 +10,7 @@
         #count   = !git shortlog -sn
         st = status
         stat = status
-	fap = fetch --all --prune
+        fap = fetch --all --prune
 
 [color]
         diff = auto

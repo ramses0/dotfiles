@@ -1,5 +1,10 @@
+#!/bin/sh
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 export PROJECTS=$HOME/Git
 export DOTFILES=$HOME/Git/__dotfiles__
+
+alias todo='vim ~/host/Desktop/todo.txt'
 
 # fancy ssh-stuff!
 #export SSH_AUTH_SOCK=~/.ssh/ssh-agent.$HOSTNAME.sock
@@ -13,22 +18,22 @@ function auth() {
 #eval `ssh-agent`
 #ssh-add
 
-FILES=$( find $DOTFILES -name path.sh )
-for file in "$FILES" ; do
-	echo "Importing $file..."
+FILES=$( find $DOTFILES -name sourceme.sh )
+for file in $FILES ; do
+	echo "Sourcing: $file"
 	source $file
 done
-
-$DOTFILES/vim/install.sh
 
 if [ -z "$PS1" ]; then
         echo "---===[[[ this shell is not interactive ]]]===---"
 else
 	ssh_agent_status() {
-		if [ "" == "$SSH_AUTH_SOCK" ] ; then
-			echo -n "[locked]";
-		else
-			echo -n "[unlocked]";
+        GREEN='\033[1;32m'
+        NC='\033[0m' # No Color
+		if [ "" == "$SSH_AUTH_SOCK" ] ;
+            then printf '\xf0\x9F\x94\x92 '  # lock character
+		    else printf "${GREEN}\xE2\x80\xA2${NC} "  # triangle character
+		    #else printf '\xE2\x80\xA2\xf0\x9F\x94\x91 '  # unlock character
 		fi
 	}
 	alias ls='ls --color=auto'

@@ -18,8 +18,8 @@ if [ ! -f ~/.vim ] ; then
 
 	# todo.txt
 	git clone git://github.com/freitass/todo.txt-vim.git ~/todo-txt
-	cd ~/todo-txt
-	cp -R * ~/.vim
+	cp -R ~/todo-txt/* ~/.vim
+    rm -rf ~/todo-txt
 fi
 
 # if test ! $(which brew)
@@ -37,5 +37,4 @@ fi
 #   fi
 # 
 # fi
-
-exit 0
+#exit 0
