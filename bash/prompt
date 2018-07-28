@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+GREEN='\033[1;32m'
+NC='\033[0m' # No Color
+PWD=$( pwd )
+if [ "" == "$SSH_AUTH_SOCK" ] ; then
+    #printf '\xf0\x9F\x94\x92 $PWD $'  # lock character
+    printf "(X $PWD)> "  # lock character
+else
+    printf "($PWD)> "  # triangle character
+    #else printf '\xE2\x80\xA2\xf0\x9F\x94\x91 '  # unlock character
+fi
