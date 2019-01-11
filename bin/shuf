@@ -1,0 +1,2 @@
+#!/bin/sh
+cat | perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'

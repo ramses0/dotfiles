@@ -24,6 +24,9 @@ for file in $FILES ; do
 	source $file
 done
 
+source ./rand_bg
+rand_bg
+
 if [ -z "$PS1" ]; then
     echo "---===[[[ this shell is not interactive ]]]===---"
 else
@@ -31,6 +34,8 @@ else
     echo "---===[[[ THIS SHELL IS INTERACTIVE ]]]===---"
     alias ls='ls --color=auto'
     alias sra='ssh robertames.com'
+
+    rand_bg
 
     # delegate prompt activity to separate script
     function prompt_command {

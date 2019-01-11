@@ -1,2 +1,2 @@
 #!/bin/sh
-which heroku || curl https://cli-assets.heroku.com/install.sh | sh
+which heroku > /dev/null || { curl https://cli-assets.heroku.com/install.sh | sh ; }

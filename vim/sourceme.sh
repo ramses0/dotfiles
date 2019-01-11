@@ -5,20 +5,21 @@
 # This installs useful vim stuff from all over
 
 # check if not exists
-if [ ! -f ~/.vim ] ; then
-	# pathogen
-	mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-		curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+if [[ ! -d ~/.vim ]] ; then
+    mkdir -p ~/.vim
+#   # pathogen
+#   mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+#       curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-	# fugitive
-	FUGITIVE_DIR=~/.vim/bundle/vim-fugitive
-	mkdir -p ~/.vim/bundle
-	test -f $FUGITIVE_DIR || git clone https://github.com/tpope/vim-fugitive.git $FUGITIVE_DIR
-	vim -u NONE -c "helptags vim-fugitive/doc" -c q
+#   # fugitive
+#   FUGITIVE_DIR=~/.vim/bundle/vim-fugitive
+#   mkdir -p ~/.vim/bundle
+#   test -f $FUGITIVE_DIR || git clone https://github.com/tpope/vim-fugitive.git $FUGITIVE_DIR
+#   vim -u NONE -c "helptags vim-fugitive/doc" -c q
 
-	# todo.txt
-	git clone git://github.com/freitass/todo.txt-vim.git ~/todo-txt
-	cp -R ~/todo-txt/* ~/.vim
+    # todo.txt
+    git clone git://github.com/freitass/todo.txt-vim.git ~/todo-txt
+    cp -R ~/todo-txt/* ~/.vim
     rm -rf ~/todo-txt
 fi
 

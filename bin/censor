@@ -1,0 +1,2 @@
+#!/bin/sh
+cat | tr 'a-zA-Z' 'X' | tr '0-9' '#' | sed 's/[^X# \.]/%/g'
